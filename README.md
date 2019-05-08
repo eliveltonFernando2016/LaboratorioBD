@@ -14,7 +14,7 @@
 
 ### Compactação dos Dados
     Para concatenar os dados do diretório /SAEB, utilize o seguinte comando:
-            __ $cat part* > file.zip __
+<strong>        $cat part* > file.zip       </strong>
 
     Para concatenar os dadod do diretório /Data/Parts, utilize o seguinte comando:
             ** $cat microdados_saeb_2017PART* > file.zip **
