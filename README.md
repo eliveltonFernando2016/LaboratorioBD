@@ -1,7 +1,7 @@
 # Universidade Federal do Paraná
 ### Laboratório de Banco de Dados
 
-##### Descrição
+### Descrição
     Estruturação da base de dados do SAEB 2017 (Sistema de Avaliação da Educação Básica). Podendo esta
     base ser encontrada no seguinte link: http://portal.inep.gov.br/educacao-basica/saeb. As informações
     referentes aos dados, encontra-se no diretório Dicionário.
@@ -14,6 +14,7 @@
 
 ### Compactação dos Dados
     Para concatenar os dados do diretório /SAEB, utilize o seguinte comando:
-            $cat part* > file.zip
+            >$cat part* > file.zip
+
     Para concatenar os dadod do diretório /Data/Parts, utilize o seguinte comando:
-            $cat microdados_saeb_2017PART* > file.zip
+            > $cat microdados_saeb_2017PART* > file.zip
