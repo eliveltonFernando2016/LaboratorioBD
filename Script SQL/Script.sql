@@ -10,17 +10,16 @@ CREATE TABLE Estado(
     nome        VARCHAR(500),
     ref_Regiao  INTEGER,
 
-    PRIMARY KEY (id_Estado, ref_Regiao),
+    PRIMARY KEY (id_Estado),
     FOREIGN KEY (ref_Regiao) REFERENCES Regiao(id_Regiao)
 );
 
 CREATE TABLE Municipio(
     id_Municipio    SERIAL,
-    cod_Municipio   BIGINT UNIQUE NOT NULL,
-    nome            VARCHAR(500),
+    cod_Municipio   BIGINT UNIQUE,
     ref_Estado      INTEGER NOT NULL,
 
-    PRIMARY KEY (id_Municipio, ref_Estado),
+    PRIMARY KEY (cod_Municipio, ref_Estado),
     FOREIGN KEY (ref_Estado) REFERENCES Estado(id_Estado)
 );
 
@@ -28,7 +27,7 @@ CREATE TABLE Area(
     id_Area     INTEGER NOT NULL,
     codifo      VARCHAR(100),
     
-    PRIMARY KEY (id_Area),  
+    PRIMARY KEY (id_Area)  
 );
 
 CREATE TABLE Localizacao(
@@ -47,7 +46,7 @@ CREATE TABLE nivel_socio_economico(
 );
 
 CREATE TABLE Dependencia_Adm(
-    id_dependencia   INT NOT NULL,
+    id_dependencia   INTEGER NOT NULL,
     nome_dependencia VARCHAR(100),
 
     PRIMARY KEY (id_dependencia)
@@ -206,12 +205,12 @@ CREATE TABLE Diretor(
     ref_preenchimento_Questionario  BOOLEAN,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (ref_Municipio) REFERENCES Municipio(id_Municipio),
+    FOREIGN KEY (ref_Municipio) REFERENCES Municipio(cod_Municipio),
     FOREIGN KEY (ref_Estado) REFERENCES Estado(id_Estado),
     FOREIGN KEY (ref_Escola) REFERENCES Escola(id_Escola),
-    FOREIGN KEY (ref_dependencia_ADM) REFERENCES Escola(id_dependencia_ADM),
-    FOREIGN KEY (ref_Localizacao) REFERENCES Escola(id_Localizacao),
-    FOREIGN KEY (ref_preenchimento_Questionario) REFERENCES Preenchimento_Questionario(cod_preenchimento),
+    FOREIGN KEY (ref_dependencia_ADM) REFERENCES dependencia_adm(id_dependencia),
+    FOREIGN KEY (ref_Localizacao) REFERENCES localizacao(id_Localizacao),
+    FOREIGN KEY (ref_preenchimento_Questionario) REFERENCES Preenchimento_Questionario(cod_preenchimento)
 );
 
 CREATE TABLE Professor(
@@ -275,15 +274,15 @@ CREATE TABLE Aluno(
     preenchimento_Questionario  BOOLEAN,
 
     PRIMARY KEY (id_Aluno),
-    FOREIGN KEY (ref_Municipio) REFERENCES Municipio(id_Municipio),
+    FOREIGN KEY (ref_Municipio) REFERENCES Municipio(cod_Municipio),
     FOREIGN KEY (ref_Estado) REFERENCES Estado(id_Estado),
     FOREIGN KEY (ref_Regiao) REFERENCES Regiao(id_Regiao),
     FOREIGN KEY (ref_Escola) REFERENCES Escola(id_Escola),
-    FOREIGN KEY (ref_Area) REFERENCES Escola(id_Area),
-    FOREIGN KEY (ref_Tuno) REFERENCES Escola(id_Turno),
-    FOREIGN KEY (ref_Serie) REFERENCES Escola(id_Serie),
-    FOREIGN KEY (ref_Localizacao) REFERENCES Escola(id_Localizacao),
-    FOREIGN KEY (ref_dependencia_ADM) REFERENCES Escola(id_dependencia_ADM)
+    FOREIGN KEY (ref_Area) REFERENCES Area(id_Area),
+    FOREIGN KEY (ref_Turno) REFERENCES turno(id_Turno),
+    FOREIGN KEY (ref_Serie) REFERENCES serie(id_Serie),
+    FOREIGN KEY (ref_Localizacao) REFERENCES localizacao(id_Localizacao),
+    FOREIGN KEY (ref_dependencia_ADM) REFERENCES dependencia_adm(id_dependencia)
 );
 
 CREATE TABLE Item(
@@ -298,8 +297,8 @@ CREATE TABLE Item(
     gabarito                VARCHAR(1),
 
     PRIMARY KEY (serie, ref_tipo_Prova, serie_Item, bloco, posicao, id_Item),
-    FOREIGN KEY (ref_tipo_Prova) REFERENCES tipo_prova(id_prova),
-    FOREIGN KEY (ref_disciplina) REFERENCES disciplina(id_disciplina)
+    FOREIGN KEY (ref_tipo_Prova) REFERENCES tipo_prova(descricao),
+    FOREIGN KEY (ref_disciplina) REFERENCES disciplina(cod_disciplina)
 );
 
 CREATE TABLE Questionario_Geral(
