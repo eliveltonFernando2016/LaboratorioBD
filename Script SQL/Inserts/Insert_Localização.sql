@@ -1,0 +1,1 @@
+INSERT INTO Localizacao(id_localizacao, nome_localizacao) VALUES (1, 'Urbana'), (2, 'Rural');

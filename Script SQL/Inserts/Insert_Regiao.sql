@@ -1,0 +1,1 @@
+INSERT INTO Regiao(id_Regiao, nome) VALUES (1, 'Norte'), (2, 'Nordeste'),  (3, 'Sudeste'), (4, 'Sul'), (5, 'Centro-Oeste');

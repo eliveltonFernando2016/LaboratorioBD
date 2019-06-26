@@ -1,0 +1,1 @@
+INSERT INTO turno(id_turno, nome_turno) VALUES (1, 'Matutino'), (2, 'Vespertino'), (3, 'Noturno');
