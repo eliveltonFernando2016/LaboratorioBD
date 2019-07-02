@@ -32,7 +32,7 @@
     relacionamento e diagramas SQL.
 
 #### Passo 4
-    Para a inserção dos dados das tabelas normalizadas, foi utilizado os códigos apresentados
+    Para a inserção dos dados das tabelas normalizadas, foram utilizados os códigos apresentados
     diretório LaboratorioBD/Scripts SQL/Inserts.
 
     Insert_Regiao.sql
@@ -53,8 +53,9 @@
     TS_ITEM.csv, TS_ESCOLA.csv,TS_PROFESSOR.csv, TS_DIRETOR.csv, TS_ALUNOS_3EM_AG.csv,
     TS_ALUNOS_3EM_ESC.csv, TS_ALUNOS_5EF.csv, TS_ALUNOS_9EF.csv.
 
-    Foi utilizado o seguinte código em Python 3, contido no diretório LaboratorioBD/Script SQL/reducedData.py
-    para a filtragem dos dados e inserção dos mesmos em suas respectivas tabelas.
+    Foi utilizado o seguinte código em Python 3, contido no diretório LaboratorioBD/
+    Script SQL/reducedData.py para a filtragem dos dados e inserção dos mesmos em suas
+    respectivas tabelas.
 
     Para a importação dos dados, foram utilizados os seguintes campos apresentados pela tabela abaixo,
     utilizando seus respectivos arquivos de dados.
@@ -67,7 +68,18 @@
 | diretor | TS_DIRETOR.csv | ID_PROVA_BRASIL ID_UF ID_MUNICIPIO ID_ESCOLA ID_DEPENDENCIA_ADM ID_LOCALIZACAO IN_PREENCHIMENTO_QUESTIONARIO |
 | alunos | TS_ALUNO_3EM_AG.csv TS_ALUNO_3EM_ESC.csv TS_ALUNO_5EF.csv TS_ALUNO_9EF.csv | ID_PROVA_BRASIL ID_REGIAO ID_UF ID_MUNICIPIO6 ID_AREA ID_ESCOLA6 ID_DEPENDENCIA_ADM ID_LOCALIZACAO ID_TURMA ID_TURNO ID_SERIE ID_ALUNO IN_SITUACAO_CENSO IN_PREENCHIMENTO_PROVA IN_PRESENCA_PROVA ID_CADERNO ID_BLOCO_1 ID_BLOCO_2 TX_RESP_BLOCO_1_LP2 TX_RESP_BLOCO_2_LP2 TX_RESP_BLOCO_1_MT2 TX_RESP_BLOCO_2_MT2 IN_PROFICIENCIA IN_PROVA_BRASIL ESTRATO_ANEB PESO_ALUNO_LP PESO_ALUNO_MT PROFICIENCIA_LP ERRO_PADRAO_LP PROFICIENCIA_LP_SAEB ERRO_PADRAO_LP_SAEB PROFICIENCIA_MT ERRO_PADRAO_MT PROFICIENCIA_MT_SAEB ERRO_PADRAO_MT_SAEB IN_PREENCHIMENTO_QUESTIONARIO |
 
-    Para a inserção destes dados, foi utilizado a opção de import automático dos arquivos de dados no PgAdmin. 
-
 #### Passo 6
-    Os dados de respostas dos formulários contidos nos arquivos de dados também foram separados em um novo arquivo, utilizando o seguinte código
+    Para a inserção destes dados, foi utilizado a opção de import automático dos 
+    arquivos de dados no PgAdmin. 
+    Os dados de respostas dos formulários contidos nos mesmos arquivos também
+    foram separados em um novo arquivo, utilizando o código, presente no seguinte 
+    diretório: LaboratorioBD/Script SQL/filter.py 
+    
+#### Passo 7
+    Os questionários respondidos por professores, diretores, alunos e escolas(Responsável pela escola)
+    possuem o mesmo padrão de respostas, mudando apenas o conteúdo das questões e a quantidade das mesmas. 
+    Portanto foi criado a tabela "questionario_geral" que possui uma chave primária única além de 125 campos 
+    paras as questões que possuem o seguinte padrão <q001, q002, ... , q125>. Além dessa tabela foram criadas 
+    tabelas específicas para cada uma das tabelas citadas inicialmente, essas tabelas possuem o seguinte padrão, 
+    uma chave primária, uma chave estrangeira referenciando questionario_geral, e outra chave referenciando sua 
+    tabela nativa(escola, aluno, professor, diretor, ...).
