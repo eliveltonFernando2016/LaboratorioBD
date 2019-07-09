@@ -1,1 +1,0 @@
-INSERT INT Dependencia_Adm(id_dependencia, nome_dependencia) VALUES (1, 'Federal'), (2, 'Estadual'), (3, 'Municipal'), (4, 'Privada');

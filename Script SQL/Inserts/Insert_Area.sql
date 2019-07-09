@@ -1,1 +1,0 @@
-INSERT INT Area(id_Area, codifo) VALUES (1, 'Capital'), (2, 'Interior');

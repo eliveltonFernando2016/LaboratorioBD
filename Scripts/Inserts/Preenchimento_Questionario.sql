@@ -1,0 +1,1 @@
+INSERT INTO preenchimento_questionario(id_preenchimento, cod_preenchimento, nome_preenchimento)VALUES (1, false, 'Não Preenchido'), (2, true, 'Preenchido parcial ou totalmente');
