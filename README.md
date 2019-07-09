@@ -72,5 +72,5 @@ O script de criação dos questionários específicos estão especificados aqui:
 
 Para inserção dos dados das tabelas, primeiramente foi feito a filtragem dos dados desses arquivos, usando o código em python descrito no seguinte arquivo: [reduce_data.py](Scripts/reduce_data.py), e então foram importados os dados primeiramente para a tabela questionario_geral usando a importação automática de arquivo csv do pgAdmin.
 
-### Passo 8
+#### Passo 8
 Com os dados já inseridos na tabela questionario_geral é necessário a inserção dos dados nas tabelas específicas. Pra isso foi utilizado os seguintes scripts: [questionario_aluno.sql](Scripts/Inserts/Questionario_Aluno.sql), [questionario_diretor.sql](Scripts/Inserts/Questionario_Diretor.sql), [questionario_escola.sql](Scripts/Inserts/Questionario_Escola.sql), [questionario_professor.sql](Scripts/Inserts/Questionario_Professor.sql).
